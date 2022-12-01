@@ -1,11 +1,14 @@
 * {
     box-sizing: border-box;
+    font-size: 1em;
 }
 
 html,body {
     margin:0;
+    padding:0;
     height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-family:'inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header, main,article,div{
@@ -16,6 +19,25 @@ body{
     display:grid;
     grid-template-rows: min-content 1fr min-content;
     grid-template-columns: 1fr;
+}
+/* header styling */
+.header{
+    background-image: linear-gradient(to right, black, white, red, white, green);
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 1.5em;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*Welcome tag*/
+#name{
+    color: goldenrod;
+    text-align: left;
+
 }
 
 main{
