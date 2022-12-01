@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "hbs": "^4.2.0"
+  },
+  "name": "a-track",
+  "version": "1.0.0",
+  "description": "allows athletes to track their lap times",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dvtm",
+  "license": "ISC"
+}

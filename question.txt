@@ -1,0 +1,52 @@
+
+
+A professional athlete who specializes in running the 100 meters and 200 meters sprint races, takes part in a number of championship events in a year. This athlete would like a web application developed so that he can keep track of his times in these championship events. This web application should be able to allow the athlete to do the following:
+
+    View, add, edit, or delete the time entries in the web application;
+
+    Display the various time entries in graphs;
+
+    Calculate the median time in the data entries.
+
+Project Requirements
+
+    You can make use of any CSS library such as bootstrap, semantic, foundation, etc. However, this is completely optional and will not translate to a higher score just because you used one.
+
+    You can make use of any Graphing or Charting libraries to draw your graphs.
+
+    You must NOT use any front-end JavaScript frameworks (eg. React, Angular, etc). Please ask if you are not sure.
+
+    The back-end of the web application MUST be implemented using NODE.js. You can also make use of additional node packages such as Express, Handlebars, EJS, etc.
+
+    Parts of your web application MUST make use of web services.
+
+    The data for this web application MUST be stored in a JSON file.
+
+    The project must be uploaded on Blackboard by the 2nd of December 2022.
+
+Project Penalties
+
+Any two or more projects that are semantically the same will attract a very heavy penalty. The penalty will be applied equally to all the offending projects.
+How to Package your Work
+
+    Create a folder and name it the name of your group. For example, group01, group02, etc.
+
+    Add your project folder inside your group folder.
+
+    Zip your group folder.
+
+    Upload the zipped file created to Blackboard. (The file will have either a .rar or .zip extension).
+
+    Only one group member should submit the work.
+
+Mark Distribution
+
+Aesthetic User Interface ………………………. 5 marks
+
+Ease of Use ……………………………………. 5 marks
+
+Working Functionality ………………………... 10 marks
+
+Clean & Thoughtful Code …………………….. 5 marks
+
+Total Marks …………………………………… 25 marks

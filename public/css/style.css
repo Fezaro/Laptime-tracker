@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+html,body {
+    margin:0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header, main,article,div{
+    border: 2px solid rgb(35, 158, 35);
+}
+
+body{
+    display:grid;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr;
+}
+
+main{
+    display:grid;
+    grid-template-rows: min-content repeat(2, 1fr);
+
+}
+
+header,
+footer {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
