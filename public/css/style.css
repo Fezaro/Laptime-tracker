@@ -11,8 +11,17 @@ html,body {
     font-family:'inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header, main,article,div{
+/* header, main,article{
     border: 2px solid rgb(35, 158, 35);
+}
+div{
+    border: 2px solid blue;
+} */
+/* container graph */
+#container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* display: flex; */
 }
 
 body{
@@ -21,11 +30,11 @@ body{
     grid-template-columns: 1fr;
 }
 /* header styling */
-.header{
-    background-image: linear-gradient(to right, black, white, red, white, green);
+header{
+    background-image: linear-gradient(to right, black, red, green);
     color: aliceblue;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 2.0em;
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -33,21 +42,98 @@ body{
 }
 
 
-/*Welcome tag*/
-#name{
-    color: goldenrod;
-    text-align: left;
-
-}
-
 main{
     display:grid;
-    grid-template-rows: min-content repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content repeat(1, 1fr);
+    /* display: flex;
+    flex-direction: column; */
+}
+#race-view{
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../omnyala.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    animation: change 30s infinite ease-in-out;
+}
+/* loops through various images */
+/* @keyframes change{
+    0%
+    {
+        background-image: url(../omnyala.png);
+    }
+    20%{
+        background-image: url(../img2.png);
+    }
+    40%{
+        background-image: url(../img3.png);
+    }
+    60%{
+        background-image: url(../img4.png);
+    }
+    80%{
+        background-image: url(../img5.png);
+    }
+    100%{
+        background-image: url(../img6.png);
+    }
+} */
+/* modal button */
+#modal{
+    margin: 15em 5em;
+}
+/* styling modal */
+.modal-body, .modal-header, footer{
+    background-image: linear-gradient(to right, black, red , green);
+}
 
+.mb-3, .modal-footer{
+    background-color: aliceblue;
+}
+.modal-header{
+    color: aliceblue;
+    font-size: 1.1em;
+    text-align: center;
 }
 
 header,
 footer {
     grid-column-start: 1;
     grid-column-end: 4;
+}
+footer{
+    color: aliceblue;
+}
+.table{
+    /* height: 30vh; */
+    background-color: beige;
+    border: 1px black solid;
+    margin: 0;
+}
+table {
+    margin: auto;
+    width: 100%;
+    border-top: 1px black solid;
+}
+td {
+    padding-bottom: 0.4em;
+}
+.edit-button{
+    height: 10px;
+    width: 20px;
+    background-color: blue;
+}
+.delete-button{
+    height: 10px;
+    width: 20px;
+    background-color: red;
+}
+@media screen and (max-width: 500px) {
+    .container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
 }

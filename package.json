@@ -11,5 +11,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "dvtm",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fezaro/Laptime-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fezaro/Laptime-tracker/issues"
+  },
+  "homepage": "https://github.com/Fezaro/Laptime-tracker#readme"
 }
