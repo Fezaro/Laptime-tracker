@@ -37,22 +37,44 @@ async function addRaces() {
 function populateContent(races) {
   var table = document.getElementById("content");
   table.innerHTML =
-    "<tr><th>Race Name</th><th>Race Date</th><th>Lap time</th></tr>";
+    "<tr><th>Race Name</th><th>Race Date</th><th>Lap time</th><th>Edit</th><th>Delete</th></tr>";
   races.forEach((race) => {
+    // race name column
     var row = document.createElement("tr");
     var dataId = document.createElement("td");
     var textId = document.createTextNode(race.id);
     dataId.appendChild(textId);
+
+    // race date column
     var dataName = document.createElement("td");
     var textName = document.createTextNode(race.name);
     dataName.appendChild(textName);
+
+    // lap time column
     var dataTime = document.createElement("td");
     var textTime = document.createTextNode(race.time);
     dataTime.appendChild(textTime);
 
+    //edit button column
+    var dataEdit = document.createElement("td");
+    var editButton=document.createElement("button");
+    var editButtonText=document.createTextNode('Button')
+    editButton.classList.add("edit-button");
+    editButton.appendChild(editButtonText);
+
+    //delete button column
+    var dataDelete = document.createElement("td");
+    var deleteButton=document.createElement("button");
+    deleteButton.innerHTML="Delete";
+    deleteButton.classList.add("delete-button");
+    deleteButton.append(dataDelete);
+
+
     row.appendChild(dataId);
     row.appendChild(dataName);
     row.appendChild(dataTime);
+    row.appendChild(dataEdit);
+    row.appendChild(dataDelete);
     table.appendChild(row);
   });
 }
