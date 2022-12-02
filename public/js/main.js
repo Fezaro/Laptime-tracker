@@ -101,7 +101,7 @@ async function drawChart() {
   await fetchRaces().then((races) => {
     races.forEach((race) => raceData.push([race.id, parseInt(race.time)]));
   });
-  console.log(raceData)
+  console.log(raceData);
   let data = new google.visualization.DataTable();
 
   data.addColumn("string", "Race");
