@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,7 +6,7 @@
     {{!-- css link --}}
     <link rel="stylesheet" href="../../css/style.css" />
     {{!-- favicon link... logo link --}}
-    <link rel="shortcut icon" href="../public/Flag_of_Kenya.svg.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/Flag_of_Kenya.svg.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!--inter font from google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,46 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     {{!-- google libraries scripts --}}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <title>👟 Ace Track </title>
-    <script>
-        google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Race', 'Times'],
-          ['CommonWealth',  10.10],
-          ['African games',  11.70],
-          ['Kenyan 100',  10.56],
-          ['2007',  10.30],
-          ['3252', 10.5],
-          ['2007',  10.30],
-          ['2007',  10.30],
-          ['2007',  10.30],
-          ['2007',  10.30]
-        ]);
-
-        var options = {
-          title: '100 and 200 Meters Races',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-      alert="Hello?"
-    </script>
+    <title>Race Tracker </title>
 </head>
-<body>
+<body onload="fetchRaces()">
     <header class="header">
     <nav>
-        <p>Home</p>
+        <p>{{name}} Races</p>
     </nav>
     </header>
     <main id="main-content">
-        <h1 id="name">Welcome: {{name}}</h1>
         <div id="graph">
             <div id="curve_chart"></div>
             {{!-- race view container --}}
@@ -69,19 +37,23 @@
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
+                        {{!-- modal header --}}
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Race entries: </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <form class="modal-body">
+                            {{!-- Event --}}
                             <div class="mb-3">
                                 <label for="event-name" class="col-form-label">Event:</label>
                                 <input type="text" class="form-control" id="event-name" />
                             </div>
+                            {{!-- Date of Event --}}
                             <div class="mb-3">
                                 <label for="event-time" class="col-form-label">Date:</label>
                                 <input type="datetime-local" class="form-control" id="event-time" />
                             </div>
+                            {{!-- Laptime --}}
                             <div class="mb-3">
                                 <label for="laptime" class="col-form-label">Laptime (seconds):</label>
                                 <input type="number" class="form-control" id="laptime" />
@@ -89,38 +61,29 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary" onclick="alertSave()">Save changes</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 
         </div>
         </div>
         </div>
-        {{!-- <div class="achievement">
-            <div class="achievements">
-                <h3>Race won</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem eaque aliquam officiis?</p>
-            </div>
-            <div class="achievements">
-                <h3>Race won</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem eaque aliquam officiis?</p>
-            </div>
-            <div class="achievements">
-                <h3>Race won</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem eaque aliquam officiis?</p>
-            </div>
-        </div> --}}
+        <div class="table">
+            <table id="content">
+            </table>
+        </div>
     </main>
     <footer>
         <p class="copyright">
             &copy; 2022 Omnayala Track
         </p>
     </footer>
+</body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-            <script src="../public/js/main.js"></script>
-</body>
+    <script src="js/main.js"></script>
+
 </html>

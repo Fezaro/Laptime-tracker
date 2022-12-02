@@ -35,7 +35,7 @@ body{
     grid-template-columns: 1fr;
 }
 /* header styling */
-.header{
+header{
     background-image: linear-gradient(to right, black, red, green);
     color: aliceblue;
     font-weight: bold;
@@ -46,15 +46,6 @@ body{
     align-items: center;
 }
 
-
-/*Welcome tag*/
-#name{
-    color: goldenrod;
-    text-align: left;
-    font-size: 1em;
-    height: fit-content;
-    margin: 0;
-}
 
 main{
     /* display:grid;
@@ -130,4 +121,26 @@ footer {
 }
 footer{
     color: aliceblue;
+}
+.table{
+    height: 30vh;
+    background-color: aqua;
+}
+table {
+    margin: auto;
+    width: 100%;
+    border-top: 1px black solid;
+}
+.table{
+    border: 1px black solid;
+    width: 31em;
+    margin: auto;
+}
+th {
+    padding-top: 0.8em;
+    padding-bottom: 0.6em;
+    text-align: left;
+}
+td {
+    padding-bottom: 0.4em;
 }
