@@ -33,13 +33,13 @@ app.post('/races', jsonParser, (request, response) => {
 });
 
 //This is a RESTful PUT web service or edit function
-app.delete('/races', jsonParser, (request, response) =>{
-    
-});
+app.put('/races', (request, response) => {
+    response.send("Data has been edited successfully")
+  })
 
 //This is a RESTful DELETE web service
-app.delete('/students', jsonParser, (request, response) =>{
-
+app.delete('/races/${date}', jsonParser, (request, response) =>{
+    response.send("Delete Request Called")
 });
 
 

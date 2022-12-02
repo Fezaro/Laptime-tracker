@@ -1,12 +1,11 @@
 const server = "http://localhost:3000";
-var raceId;
 var raceName;
+var raceDate;
 var raceTime;
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
-//   alert("Main.JS reporting for duty")
-
+//getting data from the user
 async function fetchRaces() {
   const url = server + "/races";
   const options = {
@@ -21,9 +20,10 @@ async function fetchRaces() {
   return races;
 }
 
+// sending data to the user
 async function addRaces() {
   const url = server + "/races";
-  const race = { id: raceId, name: raceName, time: raceTime };
+  const race = { name: raceName, date: raceDate, time: raceTime };
   const options = {
     method: "POST",
     headers: {
@@ -34,6 +34,32 @@ async function addRaces() {
   const response = await fetch(url, options);
 }
 
+// editing data in the json file
+async function editRaces() {
+  const url = server + "/races";
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(race),
+  };
+  const response = await fetch(url, options);
+}
+
+// deleting data in the json
+async function deleteRaces() {
+  const url = server + "/races/${date}";
+  const options = {
+    method: "DELETE",
+  };
+  const response = await fetch(url, options);
+  console.log("inside delete function")
+}
+// function buttonTest(){
+//     console.log("button is working")
+// }
+
 function populateContent(races) {
   var table = document.getElementById("content");
   table.innerHTML =
@@ -42,12 +68,12 @@ function populateContent(races) {
     // race name column
     var row = document.createElement("tr");
     var dataId = document.createElement("td");
-    var textId = document.createTextNode(race.id);
+    var textId = document.createTextNode(race.name);
     dataId.appendChild(textId);
 
     // race date column
     var dataName = document.createElement("td");
-    var textName = document.createTextNode(race.name);
+    var textName = document.createTextNode(race.date);
     dataName.appendChild(textName);
 
     // lap time column
@@ -57,19 +83,22 @@ function populateContent(races) {
 
     //edit button column
     var dataEdit = document.createElement("td");
-    var editButton=document.createElement("button");
-    var editButtonText=document.createTextNode('Button')
+    var editButton = document.createElement("button");
+    var editButtonText = document.createTextNode("Edit");
     editButton.classList.add("edit-button");
     editButton.appendChild(editButtonText);
+    dataEdit.appendChild(editButton);
 
     //delete button column
     var dataDelete = document.createElement("td");
-    var deleteButton=document.createElement("button");
-    deleteButton.innerHTML="Delete";
+    var deleteButton = document.createElement("button");
+    var deleteButtonText = document.createTextNode("Delete");
     deleteButton.classList.add("delete-button");
-    deleteButton.append(dataDelete);
+    deleteButton.appendChild(deleteButtonText);
+    dataDelete.appendChild(deleteButton);
+    deleteButton.onclick = deleteRaces;
 
-
+    // appending content to the specific row
     row.appendChild(dataId);
     row.appendChild(dataName);
     row.appendChild(dataTime);
@@ -78,12 +107,12 @@ function populateContent(races) {
     table.appendChild(row);
   });
 }
-//detching data that user has input
+//fetching data that user has input
 document.querySelector("form").addEventListener("submit", (e) => {
-  raceId = document.getElementById("event-name").value;
-  raceName = document.getElementById("event-time").value;
+  raceName = document.getElementById("event-name").value;
+  raceDate = document.getElementById("event-time").value;
   raceTime = document.getElementById("laptime").value;
-  if (raceId && raceName && raceTime) {
+  if (raceName && raceDate && raceTime) {
     addRaces();
     fetchRaces();
   }
@@ -99,7 +128,7 @@ function alertSave() {
 async function drawChart() {
   let raceData = [];
   await fetchRaces().then((races) => {
-    races.forEach((race) => raceData.push([race.id, parseInt(race.time)]));
+    races.forEach((race) => raceData.push([race.name, parseInt(race.time)]));
   });
   console.log(raceData);
   let data = new google.visualization.DataTable();
