@@ -36,30 +36,45 @@ async function addRaces() {
 
 // editing data in the json file
 async function editRaces() {
-  const url = server + "/races";
+  const url = server + "/races/editRaces";
+  const race = { name: raceName, date: raceDate, time: raceTime };
   const options = {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(race),
+    body: JSON.stringify(races),
   };
   const response = await fetch(url, options);
+  console.log("inside edit Button function");
+  drawChart();
+  let races=fetchRaces();
+  populateContent(races);
 }
 
 // deleting data in the json
-async function deleteRaces() {
-  const url = server + "/races/${date}";
+async function deleteRaces(button) {
+  let row = button.parentNode.parentNode;
+  let cells = row.cells;
+  let name = cells[0].innerHTML;
+  let date = cells[1].innerHTML;
+  let time = cells[2].innerHTML;
+  const url = server + "/races/delete";
   const options = {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, date, time }),
   };
   const response = await fetch(url, options);
-  console.log("inside delete function")
+  console.log("inside delete function");
+  drawChart();
+  let races=fetchRaces();
+  populateContent(races);
 }
-// function buttonTest(){
-//     console.log("button is working")
-// }
 
+// function to create table with races and details
 function populateContent(races) {
   var table = document.getElementById("content");
   table.innerHTML =
@@ -88,6 +103,10 @@ function populateContent(races) {
     editButton.classList.add("edit-button");
     editButton.appendChild(editButtonText);
     dataEdit.appendChild(editButton);
+    editButton.setAttribute("data-bs-toggle", "modal");
+    editButton.setAttribute("data-bs-target", "#Modal2");
+    editButton.onclick = ()=>editRaces(editButton);
+
 
     //delete button column
     var dataDelete = document.createElement("td");
@@ -96,7 +115,7 @@ function populateContent(races) {
     deleteButton.classList.add("delete-button");
     deleteButton.appendChild(deleteButtonText);
     dataDelete.appendChild(deleteButton);
-    deleteButton.onclick = deleteRaces;
+    deleteButton.onclick = ()=>deleteRaces(deleteButton);
 
     // appending content to the specific row
     row.appendChild(dataId);
@@ -107,7 +126,8 @@ function populateContent(races) {
     table.appendChild(row);
   });
 }
-//fetching data that user has input
+
+//fetching data that user has input using event listeners
 document.querySelector("form").addEventListener("submit", (e) => {
   raceName = document.getElementById("event-name").value;
   raceDate = document.getElementById("event-time").value;
@@ -125,12 +145,12 @@ function alertSave() {
   alert("data has been saved");
 }
 
+//function to draw chart
 async function drawChart() {
   let raceData = [];
   await fetchRaces().then((races) => {
-    races.forEach((race) => raceData.push([race.name, parseInt(race.time)]));
+    races.forEach((race) => raceData.push([race.name, parseFloat(race.time)]));
   });
-  console.log(raceData);
   let data = new google.visualization.DataTable();
 
   data.addColumn("string", "Race");
@@ -139,7 +159,7 @@ async function drawChart() {
   data.addRows(raceData);
 
   var options = {
-    title: "100 and 200 Meters Races",
+    title: "100 Meters Races",
     curveType: "function",
     legend: { position: "bottom" },
   };
@@ -150,3 +170,22 @@ async function drawChart() {
 
   chart.draw(data, options);
 }
+
+// return median
+function getSortedArray(arr){
+	return arr.slice().sort((a, b) => a - b);
+}
+function findMedian(inputArray) {
+	let sortedArr = getSortedArray(inputArray);
+	let inputLength = inputArray.length;
+	let middleIndex = Math.floor(inputLength / 2);
+	let oddLength = inputLength % 2 != 0;
+	let median;
+	if(oddLength) { // if array length is odd -> return element at middleIndex
+		median = sortedArr[middleIndex];
+	} else {
+		median = (sortedArr[middleIndex] + sortedArr[middleIndex - 1]) / 2;
+	}
+	return median;
+}
+
