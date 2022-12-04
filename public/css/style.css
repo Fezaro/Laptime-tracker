@@ -1,14 +1,20 @@
 * {
-    box-sizing: border-box;
-    font-size: 1em;
+  box-sizing: border-box;
+  font-size: 1em;
 }
 
-html,body {
-    margin:0;
-    padding:0;
-    height: 100%;
-    text-align: center;
-    font-family:'inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+  font-family: "inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+/* editing chart container */
+#curve_chart {
+  z-index: -1; /*irrelevant*/
+  min-height: 55vh;
 }
 
 /* header, main,article{
@@ -17,47 +23,44 @@ html,body {
 div{
     border: 2px solid blue;
 } */
+
 /* container graph */
-#container{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    /* display: flex; */
+#container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 
-body{
-    display:grid;
-    grid-template-rows: min-content 1fr min-content;
-    grid-template-columns: 1fr;
+body {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-columns: 1fr;
 }
 /* header styling */
-header{
-    background-image: linear-gradient(to right, black, red, green);
-    color: aliceblue;
-    font-weight: bold;
-    font-size: 2.0em;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+header {
+  background-image: linear-gradient(to right, black, red, green);
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 2em;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-main{
-    display:grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content repeat(1, 1fr);
-    /* display: flex;
-    flex-direction: column; */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content repeat(1, 1fr);
 }
-#race-view{
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    background-image: url(../omnyala.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
-    animation: change 30s infinite ease-in-out;
+#race-view {
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../omnyala.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: change 30s infinite ease-in-out;
 }
 /* loops through various images */
 /* @keyframes change{
@@ -82,68 +85,74 @@ main{
     }
 } */
 /* modal button */
-#modal{
-    margin: 15em 5em;
+#modal {
+  float: right;
 }
 /* styling modal */
-.modal-body, .modal-header, footer{
-    background-image: linear-gradient(to right, black, red , green);
+.modal-body,
+.modal-header,
+footer {
+  background-image: linear-gradient(to right, black, red, green);
 }
 
-.mb-3, .modal-footer{
-    background-color: aliceblue;
+.mb-3,
+.modal-footer {
+  background-color: aliceblue;
 }
-.modal-header{
-    color: aliceblue;
-    font-size: 1.1em;
-    text-align: center;
+.modal-header {
+  color: aliceblue;
+  font-size: 1.1em;
+  text-align: center;
 }
 
 header,
 footer {
-    grid-column-start: 1;
-    grid-column-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
-footer{
-    color: aliceblue;
+footer {
+  color: aliceblue;
 }
-.table{
-    /* height: 30vh; */
-    background-color: beige;
-    border: 1px black solid;
-    margin: 0;
+.table-container {
+  /* background-color: red; */
+  border-top: 1px black solid;
 }
 table {
-    margin: auto;
-    width: 100%;
+  width: 100%;
+  background-color: hsla(00, 100%, 97%, 1.0);
+  border-top: 1px black solid;
+  border-collapse: collapse;
+  min-height: 30vh;
+}
+table td {
+  padding-bottom: 0.4em;
+}
+table tr{
     border-top: 1px black solid;
 }
-td {
-    padding-bottom: 0.4em;
+.edit-button {
+  border-radius: 10px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  padding: 0.4em;
 }
-.edit-button{
-    border-radius: 10px;
-    background-color: blue;
-    color: white;
-    font-weight: bold;
-    padding: 0.4em;
+.delete-button {
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 0.4em;
 }
-.delete-button{
-    border-radius: 10px;
-    background-color: red;
-    color: white;
-    font-weight: bold;
-    padding: 0.4em;
+.edit-button:hover {
+  background-color: darkblue;
 }
-.edit-button:hover{
-    background-color: darkblue;
-}
-.delete-button:hover{
-    background-color: darkred;
+.delete-button:hover {
+  background-color: darkred;
 }
 @media screen and (max-width: 500px) {
-    .container{
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-    }
+  #container {
+    display: flex;
+    flex-direction: column;
+  }
 }
